@@ -2,7 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/movies', function () {
-    return view('movies');
+Route::get('/home', function () {
+    return view('test');
 });
-
