@@ -5,7 +5,9 @@
 use Illuminate\Http\Request;
 
  class MovieController extends Controller{
+    
     public function getMovies()
+    
     {
         return [
             ['id' => 1, 'title' => 'la guerre des mondes', 'description' => 'Description du premier film...'],
