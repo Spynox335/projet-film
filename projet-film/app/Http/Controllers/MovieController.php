@@ -1,13 +1,11 @@
 <?php
 
  namespace App\Http\Controllers;
-
+ use App\Models\Movie;
 use Illuminate\Http\Request;
 
  class MovieController extends Controller{
-    
     public function getMovies()
-    
     {
         return [
             ['id' => 1, 'title' => 'la guerre des mondes', 'description' => 'Description du premier film...'],
@@ -25,8 +23,9 @@ use Illuminate\Http\Request;
 
     public function index()
     {
+        $movies = Movie::all();
         return view('index', [
-            'movies' => $this->getMovies()
+            'movies' => $movies
         ]);
     }
 
