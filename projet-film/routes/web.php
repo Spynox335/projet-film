@@ -1,4 +1,5 @@
 <?php
+use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\MovieController;
 
@@ -9,3 +10,4 @@ Route::get('/home', function () {
 Route::get('/index', [MovieController::class, 'index']);
 
 Route::get('/views/{id}', [MovieController::class, 'show']);
+
