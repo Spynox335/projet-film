@@ -51,7 +51,7 @@ public function update(Request $request, $id) {
   'image' => 'required|url',
     ]);
     $movie->update($request->all());
-    return redirect('/movies/' . $id);
+    return redirect('/movie/' . $id);
 }
 
 }
