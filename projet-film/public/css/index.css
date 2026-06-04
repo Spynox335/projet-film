@@ -1,0 +1,228 @@
+body {
+    height: 100%;
+            background-color: #000;
+            color: #fff;
+            overflow-x: hidden;
+                margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+}
+
+        /* Conteneur Principal */
+        .hero-container {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        /* --- LE MUR D'AFFICHES (Dynamique) --- */
+.background-wall {
+    position: absolute;
+    top: -10%;
+    left: -10%;
+    width: 120%;
+    height: 120%;
+    z-index: 1;
+    
+    /* Mettez le lien de votre image ici */
+    background-image: url('https://i.pinimg.com/736x/47/49/72/4749721d8b4c7dd03353f6bdcab1a6ec.jpg');
+    
+    background-size: cover;
+    background-position: center;
+    opacity: 0.5; 
+    
+}
+        .poster {
+            width: 100%;
+            height: 230px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 6px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.6);
+            transition: transform 0.3s ease;
+        }
+
+        /* Voile noir dégradé pour faire ressortir le texte */
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 2;
+            background: radial-gradient(circle, rgba(0, 0, 0, 0.1) 0%, rgba(0,0,0,0.8) 85%),
+                        linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, transparent 40%, rgba(0,0,0,0.9) 100%);
+        }
+
+        /* --- INTERFACE DE NAVIGATION --- */
+        .header {
+            position: relative;
+            z-index: 3;
+            width: 100%;
+            max-width: 1250px;
+            padding: 25px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            color: #E50914;
+            font-size: 2.5rem;
+            font-weight: 900;
+            letter-spacing: -1px;
+            text-transform: uppercase;
+            text-decoration: none;
+        }
+
+        .btn-lang {
+            background: rgba(0, 0, 0, 0.5);
+            color: #fff;
+            border: 1px solid #777;
+            padding: 6px 14px;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            cursor: pointer;
+        }
+
+        .btn-login {
+            background-color: #E50914;
+            color: #fff;
+            border: none;
+            padding: 6px 18px;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background 0.2s;
+        }
+
+        .btn-login:hover {
+            background-color: #b80710;
+        }
+
+        /* --- BLOC CENTRAL --- */
+        .main-content {
+            position: relative;
+            z-index: 3;
+            max-width: 850px;
+            text-align: center;
+            padding: 0 20px;
+            margin-bottom: 80px;
+        }
+
+        .main-title {
+            font-size: 3.5rem;
+            font-weight: 900;
+            line-height: 1.15;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            font-weight: 500;
+            margin-bottom: 30px;
+        }
+
+        /* responsive */
+        @media (max-width: 768px) {
+            .main-title { font-size: 2.3rem; }
+            .subtitle { font-size: 1.2rem; }
+            .cta-form { flex-direction: column; gap: 15px; }
+            .btn-submit { padding: 14px; justify-content: center; font-size: 1.2rem; }
+            .background-wall { grid-template-columns: repeat(3, 1fr); top: -15%; }
+        }
+ body {
+    background-color: #141414; /* Fond noir style Netflix */
+    color: #fff;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    margin: 0;
+    padding: 40px 20px;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.main-title {
+    font-size: 26px;
+    font-weight: bold;
+    margin-bottom: 30px;
+    letter-spacing: 1px;
+}
+
+/* --- CONTENEUR DES CARTES (FLEXBOX POUR EFFET CAROUSEL) --- */
+.tendances-row {
+    display: flex;
+    gap: 15px; /* Réduit l'espace car le numéro chevauche l'image */
+    padding-left: 50px; /* Évite que le premier chiffre soit coupé à gauche */
+    overflow-x: auto; /* Permet le défilement horizontal */
+    padding-bottom: 20px;
+}
+
+.tendances-row::-webkit-scrollbar {
+    display: flex; /* Force l'alignement horizontal */
+    flex-direction: row; /* Aligne les éléments de gauche à droite */
+    gap: 15px; 
+    padding-left: 50px; 
+    overflow-x: auto; /* Permet le défilement horizontal */
+    white-space: nowrap; /* Empêche les cartes de revenir à la ligne */
+    padding-bottom: 20px;
+}
+
+/* --- STRUCTURE DE LA CARTE --- */
+.movie-card-wrapper {
+    position: relative;
+    flex: 0 0 200px; /* Largeur de l'affiche */
+    height: 270px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.movie-card-wrapper:hover {
+    transform: scale(1.08);
+    z-index: 25; /* S'assure que la carte survolée passe au-dessus des autres */
+}
+
+/* L'affiche du film */
+.movie-poster {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+/* --- LES CHIFFRES GÉANTS PLACÉS DEVANT --- */
+.movie-number {
+    position: absolute;
+    bottom: 10px;     /* Ajustement pour descendre le chiffre */
+    left: 5px;       /* Ajustement pour que le chiffre chevauche le bord gauche */
+    font-size: 60px;
+    font-weight: 900;
+    line-height: 0.8;  /* Resserre la hauteur du bloc de texte */
+    color: #141414;    /* Intérieur transparent/noir pour correspondre au fond */
+    
+    /* Contour épais pour bien découper le numéro par-dessus l'affiche */
+    -webkit-text-stroke: 5px #fff; 
+     text-stroke: 5px #fff;
+    
+    letter-spacing: -10px;
+    user-select: none;
+    
+    z-index: 10;       /* FORCE le chiffre à passer DEVANT l'image */
+    transition: -webkit-text-stroke 0.3s ease;
+}
+
+/*  Effet visuel lors du survol de la carte */
+.movie-card-wrapper:hover .movie-number {
+    -webkit-text-stroke: 5px #e50914; 
+     text-stroke: 5px #e50914;
+}

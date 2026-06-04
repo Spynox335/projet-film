@@ -7,21 +7,26 @@ use Illuminate\Http\Request;
 
 class MovieController extends Controller
 {
-    public function index()
-    {
-        $movies = Movie::all(); 
+   public function index(\Illuminate\Http\Request $request)
+{
+    $genres = Movie::pluck('genre')->unique()->filter()->sort();
 
-        return view('index', [
-            'movies' => $movies
-        ]);
+    $query = Movie::query();
+
+    if ($request->has('genre') && $request->genre != '') {
+        $query->where('genre', $request->genre);
     }
+
+    $movies = $query->get();
+
+    return view('index', compact('movies', 'genres'));
+}
     public function show(string $id) 
-    {
-
-        $movie = Movie::findOrFail($id); 
-
+{
+       $movie = \App\Models\Movie::find($id);
         return view('show', [
             'movie' => $movie
         ]);
     }
+
 }
