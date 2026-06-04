@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class MovieController extends Controller
 {
-   public function index(\Illuminate\Http\Request $request)
+   public function index(Request $request)
 {
     $genres = Movie::pluck('genre')->unique()->filter()->sort();
 
@@ -23,7 +23,7 @@ class MovieController extends Controller
 }
     public function show(string $id) 
 {
-       $movie = \App\Models\Movie::find($id);
+       $movie = Movie::find($id);
         return view('show', [
             'movie' => $movie
         ]);
