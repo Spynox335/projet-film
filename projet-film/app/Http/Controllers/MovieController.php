@@ -24,7 +24,7 @@ class MovieController extends Controller
     public function show(string $id) 
 {
        $movie = Movie::find($id);
-        return view('show', [
+        return view('movies.show', [
             'movie' => $movie
         ]);
     }
@@ -51,7 +51,7 @@ public function update(Request $request, $id) {
   'image' => 'required|url',
     ]);
     $movie->update($request->all());
-    return redirect('/movies/' . $id);
+    return redirect('/movie/' . $id);
 }
 
 }

@@ -138,6 +138,7 @@ body {
             .cta-form { flex-direction: column; gap: 15px; }
             .btn-submit { padding: 14px; justify-content: center; font-size: 1.2rem; }
             .background-wall { grid-template-columns: repeat(3, 1fr); top: -15%; }
+            .background-image { size: 50%; }
         }
  body {
     background-color: #141414; /* Fond noir style Netflix */
@@ -147,11 +148,88 @@ body {
     padding: 40px 20px;
 }
 
-.container {
-    max-width: 1400px;
-    margin: 0 auto;
+/* Alignement général du titre et de la boîte */
+.filter-container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-family: Arial, sans-serif;
+    position: relative;
 }
 
+/* Le bouton Select fermé */
+.genre-select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    
+    width: 150px;
+    padding: 8px 30px 8px 12px;
+    font-size: 15px;
+    font-weight: bold;
+    color: #1e293b;
+    background-color: #ffffff;
+    border: 2px solid #cbd5e1;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'></polyline></svg>");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 14px;
+}
+
+/* L'EFFET AU CLIC (Déploiement en grille de 3) */
+.genre-select:focus {
+    outline: none;
+    border-color: #2563eb;
+    
+    /* On force l'affichage en mode bloc/grille */
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr); /* 3 colonnes horizontales horizontales */
+    gap: 8px;
+    
+    /* Positionnement absolu pour flotter au-dessus du contenu comme un vrai menu */
+    position: absolute;
+    top: 45px;
+    left: 70px; /* Aligné après le mot "Films" */
+    width: 450px; /* Largeur pour accueillir les 3 blocs */
+    height: auto;
+    padding: 12px;
+    background-color: #ffffff;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    z-index: 999;
+}
+
+/* Style de chaque genre (les options de la grille) */
+.genre-select:focus option {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f8fafc; /* Fond gris clair pour faire un effet "bouton" */
+    color: #334155;
+    padding: 10px;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 6px;
+    text-align: center;
+    border: 1px solid #e2e8f0;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+/* Changement de couleur au survol d'un genre dans la grille */
+.genre-select:focus option:hover {
+    background-color: #2563eb;
+    color: #ffffff;
+}
+
+/* Cache l'option par défaut "Genres" quand la grille est ouverte */
+.genre-select:focus option[value="/movies"] {
+    display: none;
+}
 .main-title {
     font-size: 26px;
     font-weight: bold;
@@ -159,18 +237,18 @@ body {
     letter-spacing: 1px;
 }
 
-/* --- CONTENEUR DES CARTES (FLEXBOX POUR EFFET CAROUSEL) --- */
+/* --- EFFET CAROUSSEL --- */
 .tendances-row {
     display: flex;
-    gap: 15px; /* Réduit l'espace car le numéro chevauche l'image */
-    padding-left: 50px; /* Évite que le premier chiffre soit coupé à gauche */
-    overflow-x: auto; /* Permet le défilement horizontal */
+    gap: 15px; 
+    padding-left: 50px; 
+    overflow-x: auto; 
     padding-bottom: 20px;
 }
 
 .tendances-row::-webkit-scrollbar {
-    display: flex; /* Force l'alignement horizontal */
-    flex-direction: row; /* Aligne les éléments de gauche à droite */
+    display: flex;
+    flex-direction: row;
     gap: 15px; 
     padding-left: 50px; 
     overflow-x: auto; /* Permet le défilement horizontal */
@@ -178,7 +256,6 @@ body {
     padding-bottom: 20px;
 }
 
-/* --- STRUCTURE DE LA CARTE --- */
 .movie-card-wrapper {
     position: relative;
     flex: 0 0 200px; /* Largeur de l'affiche */
@@ -189,10 +266,9 @@ body {
 
 .movie-card-wrapper:hover {
     transform: scale(1.08);
-    z-index: 25; /* S'assure que la carte survolée passe au-dessus des autres */
+    z-index: 25; 
 }
 
-/* L'affiche du film */
 .movie-poster {
     width: 100%;
     height: 100%;
@@ -200,17 +276,15 @@ body {
     border-radius: 4px;
 }
 
-/* --- LES CHIFFRES GÉANTS PLACÉS DEVANT --- */
 .movie-number {
     position: absolute;
-    bottom: 10px;     /* Ajustement pour descendre le chiffre */
-    left: 5px;       /* Ajustement pour que le chiffre chevauche le bord gauche */
+    bottom: 10px;    
+    left: 5px;       
     font-size: 60px;
     font-weight: 900;
-    line-height: 0.8;  /* Resserre la hauteur du bloc de texte */
+    line-height: 0.8; 
     color: #141414;    /* Intérieur transparent/noir pour correspondre au fond */
     
-    /* Contour épais pour bien découper le numéro par-dessus l'affiche */
     -webkit-text-stroke: 5px #fff; 
      text-stroke: 5px #fff;
     
@@ -221,8 +295,122 @@ body {
     transition: -webkit-text-stroke 0.3s ease;
 }
 
-/*  Effet visuel lors du survol de la carte */
 .movie-card-wrapper:hover .movie-number {
     -webkit-text-stroke: 5px #e50914; 
      text-stroke: 5px #e50914;
+}
+.tour-j:hover{
+     transform: scale(2);
+  box-shadow: 0 10px 20px  rgb(0, 0, 0);
+  z-index: 10;
+  }
+  .viaduque{
+    width: 170px;
+    height: 190px;
+    border-radius: 66px;
+    cursor: pointer;
+     transition: transform 0.3s ease-in-out;
+    overflow: hidden;
+    box-shadow: 0 10px 20px  rgb(0, 0, 0);
+  }
+  .viaduque:hover{
+     transform: scale(2);
+  box-shadow: 0 10px 20px  rgb(0, 0, 0);
+  z-index: 10;
+  }
+.elephants{
+    width: 170px;
+    height: 190px;
+    border-radius: 66px;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+    overflow: hidden;
+     box-shadow: 0 10px 20px  rgb(0, 0, 0);
+}
+.elephants:hover{
+    transform: scale(2);
+  box-shadow: 0 10px 20px  rgb(0, 0, 0);
+  z-index: 10;
+}
+.radisson{
+   width: 170px;
+    height: 190px;
+    border-radius: 66px;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+    overflow: hidden;
+    box-shadow: 0 10px 20px  rgb(0, 0, 0);
+}
+.radisson:hover{
+     transform: scale(1.7);
+  box-shadow: 0 10px 20px  rgb(0, 0, 0);
+  z-index: 10;
+}
+.gorille{
+    width: 170px;
+    height: 190px;
+    border-radius: 66px;
+   cursor: pointer;
+   transition: transform 0.3s ease-in-out;
+    overflow: hidden;
+    box-shadow: 0 10px 20px  rgb(0, 0, 0);
+}
+.gorille:hover{
+    transform: scale(2);
+  box-shadow: 0 10px 20px  rgb(0, 0, 0);
+  z-index: 10;
+}
+.aeroport{
+  width: 170px;
+    height: 190px;
+    border-radius: 66px;
+    cursor: pointer;
+     transition: transform 0.3s ease-in-out;
+    overflow: hidden;
+    box-shadow: 0 10px 20px  rgb(0, 0, 0);
+}
+.aeroport:hover{
+   transform: scale(2);
+  box-shadow: 0 10px 20px  rgb(0, 0, 0);
+  z-index: 10;
+}
+.basilic{
+    width: 180px;
+    height: 180px;
+    border-radius: 66px;
+    cursor: pointer;
+     transition: transform 0.3s ease-in-out;
+    overflow: hidden;
+    box-shadow: 0 10px 20px  rgb(0, 0, 0);
+}
+.basilic:hover{
+   transform: scale(1.7);
+  box-shadow: 0 10px 20px  rgb(0, 0, 0);
+  z-index: 10;
+}
+.all-img{
+    display: flex;
+    flex-wrap:wrap ;
+   justify-content: center;
+    gap: 25px;
+}
+ .t7{
+       text-align: center;
+  }
+.all-aperçu{
+     position: relative;
+      margin-top: 8%;
+}
+.video{
+        width: 82%;    
+         margin-top: 200px auto;
+           border-radius: 50px;
+           right: 50px;
+           position: relative;
+                right: -120px;
+                 margin-top: 50px;
+}
+.contenair{
+    position: absolute;
+      margin-top: -200px;
 }
