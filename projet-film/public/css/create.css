@@ -1,0 +1,102 @@
+.items {
+  margin-bottom: 40px;
+  padding: 70px;
+}
+
+.mini-titre {
+  list-style: none;
+  display: flex;
+  gap: 70px;
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  text-transform: uppercase;
+  transition: all 0.3s;
+  align-items: center;
+  cursor: pointer;
+  list-style: none;
+  font-size: 15px;
+  border: 8px white;
+}
+.mini-titre a {
+  padding: 1%;
+  border-radius: 5px;
+  size: 50px;
+  box-shadow:
+    4px 4px 12px white,
+    -4px -4px 12px white;
+  text-decoration: none;
+}
+.mini-titre a :hover {
+  transform: translateY(2px);
+}
+
+form {
+    background-color: #4d2525;
+    border-radius: 12px;
+    max-width: 400px;
+    margin: 40px auto;
+    padding: 35px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+form label {
+    color: #E2C391;
+    font-weight: bold;
+    font-size: 14px;
+    margin-bottom: -10px;
+}
+
+form input[type="text"] {
+    background-color: #1b212a;
+    border: 1px solid rgba(226, 195, 145, 0.2);
+    border-radius: 6px;
+    color: #ffffff;
+    padding: 12px;
+    font-size: 15px;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+form input[type="text"]:focus {
+    border-color: #504e4a;
+}
+
+form input[type="file"] {
+    color: #ffffff;
+    font-size: 14px;
+    padding: 5px 0;
+}
+
+form p {
+    color: #E2C391;
+    font-weight: bold;
+    font-size: 14px;
+    margin: 0;
+}
+
+form input[type="submit"] {
+    background-color: #E2C391;
+    color: #242F40;
+    border: none;
+    border-radius: 6px;
+    padding: 14px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+form input[type="submit"]:hover {
+    background-color: #ffffff;
+    color: #242F40;
+}
+
+form input[type="submit"]:active {
+    transform: scale(0.98);
+}

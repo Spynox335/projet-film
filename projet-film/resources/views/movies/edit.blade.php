@@ -1,4 +1,7 @@
 @extends('layout.app')
+@section('head')
+      
+@endsection
 @section('content')
     <h1>Modifier le film</h1>
         @if($errors->any())
@@ -20,7 +23,7 @@
                 <label>Genre</label>
                 <input type="text" name="genre"
                 value="{{ old('genre', $movie->genre) }}">
-                <label>Image</label>
+                <label>Images</label>
                 <input type="text" name="image"
                 value="{{ old('image', $movie->image) }}">
                 <button type="submit">Mettre a jour</button>

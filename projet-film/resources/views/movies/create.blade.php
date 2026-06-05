@@ -1,6 +1,5 @@
 @extends('layout.app')
 @section('content')
-
         @if($errors->any())
             <ul>
                 @foreach($errors->all() as $error)
@@ -20,9 +19,8 @@
                         <label>Image URL</label>
                         <input type="text" name="image" value="{{ old('image') }}">
                     <button type="submit" class="btn-submit">
-                        Enregistrer le film
+                        Valider le film
                     </button>
                     </form>
             </div>          
-                    <a href="/movies">Retour à l'accueil</a>
 @endsection
